@@ -19,7 +19,6 @@ phases:
       - echo Packaging artifacts...
       - mvn package -s settings.xml
 artifacts:
-  artifacts:
   files:
     - target/icl-web-project.war
     - appspec.yml
