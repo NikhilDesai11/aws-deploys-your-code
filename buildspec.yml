@@ -8,22 +8,27 @@ phases:
   pre_build:
     commands:
       - echo Logging in to AWS CodeArtifact...
-      - CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain icl --domain-owner 725740881705 --region ap-south-1 --query authorizationToken --output text`
+      - CODEARTIFACT_AUTH_TOKEN=$(aws codeartifact get-authorization-token \
+          --domain icl \
+          --domain-owner 725740881705 \
+          --region ap-south-1 \
+          --query authorizationToken \
+          --output text)
       - export CODEARTIFACT_AUTH_TOKEN
 
   build:
     commands:
-      - echo Build started on `date`
+      - echo Build started on $(date)
       - mvn clean install -s settings.xml
+      - mvn package -s settings.xml
 
   post_build:
     commands:
-      - echo Build completed on `date`
-      - echo Packaging artifacts...
-      - mvn package -s settings.xml
+      - echo Build completed on $(date)
 
 artifacts:
-  base-directory: .
   files:
-    - '**/*'
-  discard-paths: no
+    - target/*.war
+    - appspec.yml
+    - scripts/**/*
+  discard-paths: yes
