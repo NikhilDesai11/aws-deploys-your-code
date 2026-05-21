@@ -22,9 +22,14 @@ phases:
       - echo Packaging artifacts...
       - mvn package -s settings.xml
 
+# artifacts:
+#   files:
+#     - target/nextwork-web-project.war
+#     - appspec.yml
+#     - scripts/**/*
+#   discard-paths: no
 artifacts:
+  base-directory: .
   files:
-    - target/nextwork-web-project.war
-    - appspec.yml
-    - scripts/**/*
+    - '**/*'
   discard-paths: no
