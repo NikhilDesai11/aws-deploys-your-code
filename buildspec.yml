@@ -7,20 +7,14 @@ phases:
 
   pre_build:
     commands:
-      - echo Logging in to AWS CodeArtifact...
-      - CODEARTIFACT_AUTH_TOKEN=$(aws codeartifact get-authorization-token \
-          --domain icl \
-          --domain-owner 725740881705 \
-          --region ap-south-1 \
-          --query authorizationToken \
-          --output text)
-      - export CODEARTIFACT_AUTH_TOKEN
+      - echo Logging in to CodeArtifact...
+      - export CODEARTIFACT_AUTH_TOKEN=$(aws codeartifact get-authorization-token --domain icl --domain-owner 725740881705 --region ap-south-1 --query authorizationToken --output text)
 
   build:
     commands:
       - echo Build started on $(date)
+      - mvn -v
       - mvn clean install -s settings.xml
-      - mvn package -s settings.xml
 
   post_build:
     commands:
