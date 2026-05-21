@@ -19,6 +19,9 @@ phases:
       - echo Packaging artifacts...
       - mvn package -s settings.xml
 artifacts:
+  artifacts:
   files:
-    - target/*.war
+    - target/icl-web-project.war
+    - appspec.yml
+    - scripts/**/*
   discard-paths: no
