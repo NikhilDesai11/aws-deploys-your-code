@@ -25,4 +25,3 @@ artifacts:
     - target/icl-web-project.war
     - appspec.yml
     - scripts/**/*
-  # discard-paths removed ← fix
