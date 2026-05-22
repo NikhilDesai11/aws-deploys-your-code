@@ -1,15 +1,15 @@
 version: 0.0
 os: linux
 files:
-  - source: target/icl-web-project.war   # ← fixed path
+  - source: target/icl-web-project.war
     destination: /usr/share/tomcat/webapps/
 hooks:
-  BeforeInstall:
-    - location: scripts/install_dependencies.sh
-      timeout: 300
-      runas: root
   ApplicationStop:
     - location: scripts/stop_server.sh
+      timeout: 300
+      runas: root
+  BeforeInstall:
+    - location: scripts/install_dependencies.sh
       timeout: 300
       runas: root
   ApplicationStart:
