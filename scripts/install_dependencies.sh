@@ -1,7 +1,10 @@
 #!/bin/bash
+set -e
+
 sudo yum install tomcat -y
 sudo yum -y install httpd
-sudo cat << EOF > /etc/httpd/conf.d/tomcat_manager.conf
+
+sudo tee /etc/httpd/conf.d/tomcat_manager.conf > /dev/null << EOF
 <VirtualHost *:80>
   ServerAdmin root@localhost
   ServerName app.icl.com
