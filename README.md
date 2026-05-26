@@ -108,6 +108,12 @@ The packaged artifact is generated in `target/`.
 
 This project is a server-rendered Java web app, not an API-first backend.
 
+### Architecture Diagram
+
+The diagram below shows how code moves from the development environment through GitHub, AWS CI/CD services, and finally to the EC2-hosted web server and live website.
+
+![Architecture Diagram](architecture-diagram.jpg)
+
 ### Deployment flow
 
 1. Code is pushed to GitHub.
